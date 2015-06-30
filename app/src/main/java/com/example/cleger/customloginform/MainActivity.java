@@ -35,6 +35,8 @@ public class MainActivity extends ActionBarActivity {
 
         Button signInButton = (Button) findViewById(R.id.btnSignIn);
         Button registerButton = (Button) findViewById(R.id.btnRegister);
+
+        // Add a test user
         users.add(new User("test", "test"));
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +46,7 @@ public class MainActivity extends ActionBarActivity {
                 String pInput = password.getText().toString();
 
                 boolean found = false;
+                // Check credentials
                 for (User u : users) {
                     if (uInput.equals(u.email) && pInput.equals(u.password)) {
                         found = true;
@@ -55,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
                             .LENGTH_SHORT).show();
                 else {
                         Intent myIntent = new Intent(MainActivity.this, SuccessActivity.class);
+                        // Save the username and password to pass to the next activity
                         myIntent.putExtra("username", uInput);
                         myIntent.putExtra("password", pInput);
                         MainActivity.this.startActivity(myIntent);

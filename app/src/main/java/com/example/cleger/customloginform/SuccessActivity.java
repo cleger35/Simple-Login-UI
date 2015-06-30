@@ -7,6 +7,9 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * This is the activity that will begin after a successful login.
+ */
 
 public class SuccessActivity extends ActionBarActivity {
     TextView email;
@@ -24,11 +27,13 @@ public class SuccessActivity extends ActionBarActivity {
 
         Bundle extras = getIntent().getExtras();
 
+        // Retrieve the credentials from the login activity
         if (extras.containsKey("username"))
             username = extras.getString("username");
         if (extras.containsKey("password"))
             password = extras.getString("password");
 
+        // Display the credentials for the new user
         email.setText("Username: " + username);
         pword.setText("Password: " + password);
     }
